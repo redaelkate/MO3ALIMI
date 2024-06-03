@@ -29,7 +29,17 @@ MO3ALIMI is a platform designed to help illiterate adults learn the basics of li
 - **Tensorflow**: Training neural networks to recognize handwritten digits.
 - **Dall-E 3**: Generates images to support visual learning.
 - **CSS HTML CSS FLASK**: HTML structures the content, CSS styles it, JavaScript adds interactivity, and Flask manages server-side logic, all converging to support the AI-powered features in the app
-- 
+  ## Installation
+To install MO3ALIMI:
+
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/yourusername/mo3alimi.git
+    ```
+2. Run app.py
+   ```bash
+    $ flask run
+    ```
 ![mo3alimi](https://github.com/redaelkate/MO3ALIMI/assets/146549050/1cc0ad8e-82ae-4a5e-83a8-cab6e5038274)
 ## Demo
 https://github.com/redaelkate/MO3ALIMI/assets/146549050/a9b7ea86-7c7d-4f26-9c65-7009c8b3e8c2
