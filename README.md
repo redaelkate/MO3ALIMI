@@ -26,9 +26,9 @@ the project is available as well on [huggingface](https://huggingface.co/spaces/
 ## Technologies Used
 - **Gemini API**: Used to generate lessons dynamically.
 - **OpenAI**: Facilitates user interactions.
-- **Tensorflow**: Provides speech-to-text functionality.
+- **Tensorflow**: Training neural networks to recognize handwritten digits.
 - **Dall-E 3**: Generates images to support visual learning.
+- **CSS HTML CSS FLASK**: HTML structures the content, CSS styles it, JavaScript adds interactivity, and Flask manages server-side logic, all converging to support the AI-powered features in the app
 - 
-
 ![mo3alimi](https://github.com/redaelkate/MO3ALIMI/assets/146549050/1cc0ad8e-82ae-4a5e-83a8-cab6e5038274)
 
