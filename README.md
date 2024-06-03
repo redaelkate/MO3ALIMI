@@ -32,7 +32,7 @@ Another version featuring other technologies is available on this [repository](h
 - **Tensorflow**: Training neural networks to recognize handwritten digits.
 - **Dall-E 3**: Generates images to support visual learning.
 - **CSS HTML CSS FLASK**: HTML structures the content, CSS styles it, JavaScript adds interactivity, and Flask manages server-side logic, all converging to support the AI-powered features in the app
-  ## Installation
+## Installation
 To install MO3ALIMI:
 
 1. Clone the repository:
@@ -43,6 +43,10 @@ To install MO3ALIMI:
    ```bash
     $ flask run
     ```
+## Contributers:
+- Salim EL MARDI
+- Reda EL KATE
+- Mouad EN-NASIRY
 
 ## Demo
 
