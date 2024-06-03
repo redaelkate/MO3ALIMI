@@ -1,5 +1,5 @@
 # MO3ALIMI
-
+![mo3alimi](https://github.com/redaelkate/MO3ALIMI/assets/146549050/1cc0ad8e-82ae-4a5e-83a8-cab6e5038274)
 ## Introduction
 MO3ALIMI is a platform designed to help illiterate adults learn the basics of literacy. The platform focuses on alphabets, writing, reading, and basic numeracy. Users receive personalized quizzes that assist them in learning and practicing simultaneously.
 <br>
@@ -43,7 +43,7 @@ To install MO3ALIMI:
    ```bash
     $ flask run
     ```
-![mo3alimi](https://github.com/redaelkate/MO3ALIMI/assets/146549050/1cc0ad8e-82ae-4a5e-83a8-cab6e5038274)
+
 ## Demo
 
 https://github.com/redaelkate/MO3ALIMI/assets/146549050/303396e9-c94a-423d-b28f-97a8b341dd05
