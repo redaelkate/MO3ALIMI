@@ -138,11 +138,9 @@
       <button onclick="readSectionContent('main')">اقرأ القسم</button>
     </div>
     <div id="new-section" class="content-section">
-      <h2>اختبارات</h2>
       <div id="image-placeholder">
         <!-- Your generated image will be inserted here -->
       </div>
-      <p>هنا بعض الاختبارات.</p>
       <div id="question2">hello</div>
       <button class="my-button" onclick="nextcourse()">next</button>
       <div id="buttonContainer2"></div>
@@ -190,21 +188,6 @@ function getBotResponse(message) {
     });
 }
 
-function getquiz(message) {
-  console.log("Sending message to server:", message); // Log the message being sent to the server
-  $.get("/getquiz", { msg: message })
-    .done(function(data) {
-      console.log("Received data from server:", data); // Log the data received from the server
-      generateButtons(data);
-      // Call function to generate buttons based on the received data
-      if(document.getElementById("question4").innerText!=='none')
-      {speak(data[0]);}
-    })
-    .fail(function(jqXHR, textStatus, errorThrown) {
-      console.error("Error in getBotResponse:", textStatus, errorThrown); // Log any errors that occur during the request
-    });
-}
-
 function generateButtons(data) {
   if (!Array.isArray(data) || data.length < 2) {
     console.error("Data is not in the expected format:", data); // Log an error if data is not an array or has less than two elements
@@ -213,13 +196,10 @@ function generateButtons(data) {
 
   var container = document.getElementById("buttonContainer");
   var container2 = document.getElementById("buttonContainer2");
-  var container3 = document.getElementById("buttonContainer3");
   document.getElementById("question").innerText = data[0];
-  document.getElementById("question4").innerText = data[0];
    // Set the question text
   container.innerHTML = '';
   container2.innerHTML = '';
-  container3.innerHTML = '';
   // Clear the button container
   selectedChoice = null; // Reset selected choice
 
@@ -248,7 +228,6 @@ function generateButtons(data) {
       alert("Please select an option before proceeding."); // Show an alert if no choice is selected
     }
   };
-  
   container.appendChild(nextButton);
   let nextButton2 = nextButton.cloneNode(true); // Append the "Next" button to the container
 }
@@ -264,42 +243,22 @@ function selectChoice(button) {
 function nextcourse(){
   getcourse("next");
 }
-function nextreading(){
-  getReading("next");
-}
 function getcourse(message) {
   console.log("Sending message to server:", message);
   $.get("/getCourse", { msg: message })
     .done(function(data) {
-      document.getElementById("question2").innerText = data;
-      generateImage(data); // Call generateImage with the course content
+      document.getElementById("question2").innerText = data[1];
+      generateImage(data[0]); // Call generateImage with the course content
     })
     .fail(function(jqXHR, textStatus, errorThrown) {
       console.error("Error in getcourse:", textStatus, errorThrown);
     });
 }
-
 
 $(document).ready(function() {
   getBotResponse("start");
   getcourse("start"); // Initial message from the bot when the document is ready
-  getReading("start");
-  getquiz("start");
 });
-
-function getReading(message) {
-  console.log("Sending message to server:", message);
-  $.get("/getReading", { msg: message })
-    .done(function(data) {
-      document.getElementById("question3").innerText = data;
-      generateImage(data); // Call generateImage with the course content
-    })
-    .fail(function(jqXHR, textStatus, errorThrown) {
-      console.error("Error in getcourse:", textStatus, errorThrown);
-    });
-}
-
-
   
 function showContent(sectionId) {
   const contentSections = document.querySelectorAll('.content-section');
