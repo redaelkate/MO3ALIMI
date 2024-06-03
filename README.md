@@ -45,7 +45,10 @@ To install MO3ALIMI:
     ```
 ![mo3alimi](https://github.com/redaelkate/MO3ALIMI/assets/146549050/1cc0ad8e-82ae-4a5e-83a8-cab6e5038274)
 ## Demo
-https://github.com/redaelkate/MO3ALIMI/assets/146549050/a9b7ea86-7c7d-4f26-9c65-7009c8b3e8c2
+
+https://github.com/redaelkate/MO3ALIMI/assets/146549050/303396e9-c94a-423d-b28f-97a8b341dd05
+
+009c8b3e8c2
 
 ## pitch
 [pitch.pdf](https://github.com/user-attachments/files/15540413/pitch.pdf)
