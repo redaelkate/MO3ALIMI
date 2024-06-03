@@ -48,7 +48,6 @@ To install MO3ALIMI:
 https://github.com/redaelkate/MO3ALIMI/assets/146549050/a9b7ea86-7c7d-4f26-9c65-7009c8b3e8c2
 
 ## pitch
-[pitch.pdf](https://github.com/user-attachments/files/15533885/pitch.pdf)
-
+[pitch.pdf](https://github.com/user-attachments/files/15540413/pitch.pdf)
 
 
