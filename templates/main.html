@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>التعرف على الحروف العربية</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Almarai&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Almarai', sans-serif;
+      direction: rtl;
+    }
+
+    .sidebar {
+      height: 100%;
+      width: 200px;
+      position: fixed;
+      top: 0;
+      right: 0;
+      background-color: #1E90FF;
+      padding-top: 20px;
+    }
+
+    .sidebar a {
+      padding: 10px 15px;
+      text-decoration: none;
+      font-size: 18px;
+      color: white;
+      display: block;
+    }
+
+    .sidebar a:hover {
+      background-color: #C1272D;
+    }
+
+    .content {
+      margin-right: 210px;
+      padding: 20px;
+    }
+
+    .content-section {
+      display: none;
+    }
+
+    .container {
+      display: none;
+    }
+    .button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 5px;
+    }
+    .selected {
+      background-color: yellow;
+    }
+  </style>
+</head>
+<div class="sidebar">
+  <!-- Logo -->
+  <div style="text-align: center; margin-bottom: 20px;">
+    <img src="static\mo3alimi.svg" alt="Logo" style="max-width: 100%; height: auto;">
+  </div>
+
+  <!-- Sidebar links -->
+  <a href="#" class="nav-link" onclick="showContent('home')">الرئيسية</a>
+  <a href="#" class="nav-link" onclick="showContent('quizzes')">الحساب (اختبارات)</a>
+  <a href="#" class="nav-link" onclick="showContent('new-section')">الحساب (دروس)</a>
+  <a href="#" class="nav-link" id="hand" onclick="showContent('main')">تعلم الكتابة</a>
+  <a href="#" class="nav-link" onclick="showContent('phonics')">الأصوات الأساسية</a>
+</div>
+
+  <div class="content">
+    <div id="home" class="content-section">
+      <h2>الرئيسية</h2>
+      <p>مرحبًا بك في الصفحة الرئيسية.</p>
+      <button onclick="readSection('home')">اقرأ</button>
+    </div>
+    <div id="quizzes" class="content-section">
+      <h2>اختبارات</h2>
+      <p>هنا بعض الاختبارات.</p>
+      <center>
+        <div id="question"></div>
+        <div id="buttonContainer" class="button-container"></div>
+      </center>
+      <button onclick="readSection('quizzes')">اقرأ</button>
+    </div>
+    <div id="main" class="content-section">
+      <h2>تعلم الكتابة</h2>
+      <p>تعلم الكتابة</p>
+      <div class="container" id="writing-section">
+        <h1>ارسم الحرف العربي</h1>
+        <img id="letter-image" alt="حرف عربي" />
+        <canvas id="main-canvas" width="400" height="400" class="canvas"></canvas>
+        <div class="buttons">
+          <button id="erase">مسح</button>
+          <button id="predict">توقع</button>
+          <button id="next">التالي</button>
+        </div>
+        <div id="result"></div>
+        <canvas id="small-canvas" width="64" height="64" class="canvas"></canvas>
+        <canvas id="small-main-canvas" width="64" height="64" class="canvas"></canvas>
+      </div>
+      <button onclick="readSection('main')">اقرأ</button>
+    </div>
+    <div id="new-section" class="content-section">
+      <h2>اختبارات</h2>
+      <p>هنا بعض الاختبارات.</p>
+      <div style="display: flex; justify-content: flex-end;">
+        <div style="width: 75%;">
+          <div id="question2">hello</div>
+          <button class="my-button" onclick="nextcourse()">next</button>
+          <div id="buttonContainer2"></div>
+          <button onclick="readSectionContent('new-section')">اقرأ القسم</button>
+        </div>
+        <div style="border: 1px solid black; padding: 10px; margin-left: 10px;">
+          <img src="path_to_your_image.jpg" alt="Image" style="max-width: 100%; height: auto;">
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  
+  <script>
+    let speaking=false;
+    var selectedChoice = null; // Variable to store the selected choice
+
+function getBotResponse(message) {
+  console.log("Sending message to server:", message); // Log the message being sent to the server
+  $.get("/get", { msg: message })
+    .done(function(data) {
+      console.log("Received data from server:", data); // Log the data received from the server
+      generateButtons(data);
+      // Call function to generate buttons based on the received data
+      if(document.getElementById("question").innerText!=='none')
+      {speak(data[0]);}
+    })
+    .fail(function(jqXHR, textStatus, errorThrown) {
+      console.error("Error in getBotResponse:", textStatus, errorThrown); // Log any errors that occur during the request
+    });
+}
+
+function generateButtons(data) {
+  if (!Array.isArray(data) || data.length < 2) {
+    console.error("Data is not in the expected format:", data); // Log an error if data is not an array or has less than two elements
+    return; // Exit the function early if data format is incorrect
+  }
+
+  var container = document.getElementById("buttonContainer");
+  var container2 = document.getElementById("buttonContainer2");
+  document.getElementById("question").innerText = data[0];
+   // Set the question text
+  container.innerHTML = '';
+  container2.innerHTML = '';
+  // Clear the button container
+  selectedChoice = null; // Reset selected choice
+
+  for (var i = 1; i < 4; i++) { // Loop through the choices, starting from index 1
+    var button = document.createElement("button"); // Create a new button element
+    button.className = "button"; // Set the class name for styling
+    button.textContent = data[i]; // Set the button text to the current choice
+    button.onclick = function() {
+      selectChoice(this);
+      speak(this.textContent); // Call function to select the choice when button is clicked
+    };
+    
+    
+    container.appendChild(button); 
+    let button2 = button.cloneNode(true);
+  }
+
+  // Create and append the "Next" button
+  var nextButton = document.createElement("button"); // Create a new button element for "Next"
+  nextButton.className = "button"; // Set the class name for styling
+  nextButton.textContent = "Next"; // Set the button text to "Next"
+  nextButton.onclick = function() {
+    if (selectedChoice) { // Check if a choice has been selected
+      getBotResponse(selectedChoice.textContent); // Send the selected choice to the bot
+    } else {
+      alert("Please select an option before proceeding."); // Show an alert if no choice is selected
+    }
+  };
+  container.appendChild(nextButton);
+  let nextButton2 = nextButton.cloneNode(true); // Append the "Next" button to the container
+}
+
+function selectChoice(button) {
+  var buttons = document.getElementsByClassName("button");
+  for (var i = 0; i < buttons.length; i++) {
+    buttons[i].classList.remove("selected"); // Remove the "selected" class from all buttons
+  }
+  button.classList.add("selected"); // Add the "selected" class to the clicked button
+  selectedChoice = button; // Store the clicked button as the selected choice
+}
+function nextcourse(){
+  getcourse("next");
+}
+function getcourse(message) {
+  console.log("Sending message to server:", message);
+  $.get("/getCourse", { msg: message })
+    .done(function(data) {
+      document.getElementById("question2").innerText = data;
+    })
+    .fail(function(jqXHR, textStatus, errorThrown) {
+      console.error("Error in getcourse:", textStatus, errorThrown);
+    });
+}
+
+$(document).ready(function() {
+  getBotResponse("start");
+  getcourse("start"); // Initial message from the bot when the document is ready
+});
+  
+function showContent(sectionId) {
+  const contentSections = document.querySelectorAll('.content-section');
+  const writingSection = document.getElementById('writing-section');
+  contentSections.forEach(section => {
+    section.style.display = 'none';
+  });
+  writingSection.style.display = 'none';
+  document.getElementById(sectionId).style['display'] = 'block';
+  if (sectionId === 'main') {
+    writingSection.style.display = 'block';
+  }
+}
+
+    // Show the home section by default
+    function speak(text) {
+  responsiveVoice.speak(text, "Arabic Female");
+}
+
+function readSection(sectionId) {
+  let section = document.getElementById(sectionId);
+  let textToRead = section.textContent; // Get all text content
+  responsiveVoice.speak(textToRead, "Arabic Female");
+}
+
+function readAll() {
+  let allText = document.body.textContent;
+  responsiveVoice.speak(allText, "Arabic Female");
+}
+  
+  
+  // Speak the text
+
+
+    showContent('home');
+  </script>
+  <script src="static/predict.js"></script>
+  <script src="https://code.responsivevoice.org/responsivevoice.js?key=jckjBtTD"></script>
+</body>
+</html>
