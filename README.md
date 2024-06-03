@@ -2,7 +2,7 @@
 
 ## Introduction
 MO3ALIMI is a platform designed to help illiterate adults learn the basics of literacy. The platform focuses on alphabets, writing, reading, and basic numeracy. Users receive personalized quizzes that assist them in learning and practicing simultaneously.<br>
-the project is available as well on [huggingface](https://huggingface.co/spaces/mouadenna/MO3ALIMI)
+
 
 ## Table of Contents
 - [Introduction](#introduction)
