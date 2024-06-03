@@ -43,7 +43,7 @@ To install MO3ALIMI:
    ```bash
     $ flask run
     ```
-## Contributers:
+## Contributors:
 - Salim EL MARDI
 - Reda EL KATE
 - Mouad EN-NASIRY
