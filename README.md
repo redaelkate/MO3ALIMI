@@ -1,4 +1,4 @@
-# MO3ALIMI
+![image](https://github.com/redaelkate/MO3ALIMI/assets/134455937/43695169-9d3e-406e-903d-ccec102074c2)# MO3ALIMI
 ![mo3alimi](https://github.com/redaelkate/MO3ALIMI/assets/146549050/1cc0ad8e-82ae-4a5e-83a8-cab6e5038274)
 ## Introduction
 MO3ALIMI is a platform designed to help illiterate adults learn the basics of literacy. The platform focuses on alphabets, writing, reading, and basic numeracy. Users receive personalized quizzes that assist them in learning and practicing simultaneously.
@@ -37,10 +37,18 @@ To install MO3ALIMI:
     ```bash
     git clone https://github.com/yourusername/mo3alimi.git
     ```
-2. Run app.py
+2. Installation
    ```bash
-    $ flask run
+    pip install Flask google-generativeai openai http://127.0.0.1:5000/
     ```
+4. Run app.py
+   ```bash
+    $ python app.py
+    ```
+    ```bash
+    $ http://127.0.0.1:5000/
+    ```
+
 ## Contributors:
 - Salim EL MARDI
 - Reda EL KATE
