@@ -52,7 +52,8 @@ https://github.com/redaelkate/MO3ALIMI/assets/146549050/303396e9-c94a-423d-b28f-
 
 
 ## pitch
-[pitch.pdf](https://github.com/user-attachments/files/15540413/pitch.pdf)
+[pitch.pdf](https://github.com/user-attachments/files/15540911/pitch.pdf)
+
 
 <br>
 Another version featuring other technologies is available on this [repository](https://github.com/mouadenna/MO3ALIMI).
