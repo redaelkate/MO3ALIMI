@@ -27,7 +27,7 @@ MO3ALIMI is a platform designed to help illiterate adults learn the basics of li
 ## Technologies Used
 - **Gemini API**: Used to generate lessons dynamically.
 - **OpenAI**: Facilitates user interactions.
-- **Tensorflow**: Training neural networks to recognize handwritten digits.
+- **Tensorflow**: Training neural networks to recognize arabic letters.
 - **Dall-E 3**: Generates images to support visual learning.
 - **CSS HTML CSS FLASK**: HTML structures the content, CSS styles it, JavaScript adds interactivity, and Flask manages server-side logic, all converging to support the AI-powered features in the app
 ## Installation
