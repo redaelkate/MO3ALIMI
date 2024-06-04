@@ -39,7 +39,7 @@ To install MO3ALIMI:
     ```
 2. Installation
    ```bash
-    pip install Flask google-generativeai openai http://127.0.0.1:5000/
+    pip install Flask google-generativeai openai
     ```
 4. Run app.py
    ```bash
