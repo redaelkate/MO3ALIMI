@@ -64,6 +64,5 @@ https://github.com/redaelkate/MO3ALIMI/assets/146549050/303396e9-c94a-423d-b28f-
 
 
 <br>
-Another version featuring other technologies is available on this [repository](https://github.com/mouadenna/MO3ALIMI).
-<br>
+Another version featuring other technologies is available on this [repository](https://github.com/mouadenna/MO3ALIMI).<br>
 
