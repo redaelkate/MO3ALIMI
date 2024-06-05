@@ -68,7 +68,8 @@ https://github.com/redaelkate/MO3ALIMI/assets/146549050/eabc23fa-c12c-470f-96b6-
 
 
 ## Pitching
-[MO3ALIMI PITCHING.pdf](https://github.com/user-attachments/files/15570662/MO3ALIMI.PITCHING.pdf)
+[MO3ALIMI PITCHING](https://github.com/user-attachments/files/15571732/MO3ALIMI.PITCHING.3.pdf)
+
 
 
 
