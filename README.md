@@ -8,6 +8,7 @@ MO3ALIMI is a platform designed to help illiterate adults learn the basics of li
 ## Table of Contents
 - [Introduction](#introduction)
 - [Features](#features)
+- [Project Flowchart](#flow-chart)
 - [Technologies Used](#technologies-used)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -23,6 +24,9 @@ MO3ALIMI is a platform designed to help illiterate adults learn the basics of li
 - **Basic Numeracy**: Lessons and quizzes on basic numeracy skills.
 - **Personalized Quizzes**: Tailored quizzes to reinforce learning and practice.
 - **Visual Learning**: Images generated to support visual learning.
+
+## Project Flowchart
+![Blank board](https://github.com/redaelkate/MO3ALIMI/assets/134455937/63a9cfc9-cb7d-49db-9b14-05909a282510)
 
 ## Technologies Used
 - **Gemini API**: Used to generate lessons dynamically.
